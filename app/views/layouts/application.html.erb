@@ -10,7 +10,7 @@
 <body>
 
   <%= render 'layouts/top_nav' %>
-
+  <h3>Logged in as <%=current_user.first_name%></h3>
   <% if current_user %>
   <%= link_to "Logout", '/logout' %>
 <% else %>
