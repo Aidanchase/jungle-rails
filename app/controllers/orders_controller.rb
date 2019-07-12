@@ -10,8 +10,8 @@ class OrdersController < ApplicationController
  
     if order.valid?
       empty_cart!
-      ApplicationMailer.order_confirmation(order).deliver
-      redirect_to(@user, notice: 'order was successfully placed.')
+      ApplicationMailer.jungle_email(order).deliver
+      redirect_to(order, notice: "order was successfully placed.")
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
@@ -28,11 +28,13 @@ class OrdersController < ApplicationController
   end
  
   def perform_stripe_charge
+    description = "<%= current_user%>'s jungle order"
+    currency = "cad"
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_subtotal_cents,
-      description: “Khurram Virani’s Jungle Order”,
-      currency:    ‘cad’
+      description: description,
+      currency:    currency
     )
   end
  
@@ -42,7 +44,6 @@ class OrdersController < ApplicationController
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
- 
     enhanced_cart.each do |entry|
       product = entry[:product]
       quantity = entry[:quantity]
@@ -56,5 +57,4 @@ class OrdersController < ApplicationController
     order.save!
     order
   end
- 
- end
+end
