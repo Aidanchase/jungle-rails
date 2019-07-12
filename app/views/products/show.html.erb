@@ -11,7 +11,6 @@
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
@@ -22,10 +21,24 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <hr>
+          <dt>Reviews</dt>
+          <% @product.reviews.order( 'created_at desc').each do |review| %>
+          <dd><strong> User: </strong> <i><%= review.user.first_name %></i> said "<%= review.description %>"
+          <dd> <strong> Rating:</strong> <%= review.rating %>
+          <% end %>
+          <dt>Price</dt>
+          <dd><%= @product.price %></dd>
+        </div>
+        <% if current_user %>
+        <%= form_for [@product, Review.new] do |f| %>
+          <%= f.select(:rating, [1,2,3,4,5]) %>
+          <%= f.text_field(:description) %>
+          <%= submit_tag("Save") %>
+        <% end %>
+        <% end %>
         </dl>
       </div>
     </div>
-
   </article>
-
 </section>

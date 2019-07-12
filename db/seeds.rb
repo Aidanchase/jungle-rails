@@ -35,6 +35,15 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
+User.create({first_name: "Aidan", last_name: "blah", email: "a@a.com", password: "goat"})
+User.create({first_name: "Catherine", last_name: "blah", email: "c@c.com", password: "secret"})
+User.create({first_name: "Genny", last_name: "blah", email: "g@g.com", password: "secret"})
+User.create({first_name: "Alex", last_name: "blah", email: "ax@ax.com", password: "secret"})
+User.create({first_name: "David", last_name: "blah", email: "d@d.com", password: "secret"})
+User.create({first_name: "Marc", last_name: "blah", email: "m@m.com", password: "secret"})
+
+
+
 cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
@@ -42,6 +51,7 @@ cat1.products.create!({
   quantity: 10,
   price: 64.99
 })
+
 
 cat1.products.create!({
   name:  'Women\'s Zebra pants',
@@ -130,4 +140,81 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
+})
+
+Review.create({
+  product_id: 2,
+  user_id: 1,
+  description: "Love it!",
+  rating: 5
+})
+
+Review.create({
+  product_id: 3,
+  user_id: 1,
+  description: "Killed it!",
+  rating: 6
+})
+
+Review.create({
+  product_id: 4,
+  user_id: 2,
+  description: "The worst thing I've ever bought, returned.",
+  rating: 1
+})
+
+Review.create({
+  product_id: 5,
+  user_id: 3,
+  description: "The bestest stuff",
+  rating: 10
+})
+
+Review.create({
+  product_id: 6,
+  user_id: 4,
+  description: "Acceptable.",
+  rating: 7
+})
+
+Review.create({
+  product_id: 7,
+  user_id: 4,
+  description: "Me likey bread sticks!",
+  rating: 7
+})
+
+Review.create({
+  product_id: 8,
+  user_id: 5,
+  description: "Only comes around once in a blue spoon.",
+  rating: 6
+})
+
+Review.create({
+  product_id: 9,
+  user_id: 6,
+  description: "My dog did a better job.",
+  rating: 1
+})
+
+Review.create({
+  product_id: 10,
+  user_id: 5,
+  description: "How come it doesn't come with a car!?",
+  rating: 5
+})
+
+Review.create({
+  product_id: 11,
+  user_id: 6,
+  description: "This is best in Canada bro",
+  rating: 8.5
+})
+
+Review.create({
+  product_id: 12,
+  user_id: 3,
+  description: "It didn't help me do my taxes.",
+  rating: 2.5
 })

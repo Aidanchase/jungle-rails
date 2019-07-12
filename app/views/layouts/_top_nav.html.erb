@@ -51,6 +51,11 @@
         <% end %>
         </li>
       </ul>
+      <% if current_user %>
+  <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
     </div>
   </div>
 </nav>
