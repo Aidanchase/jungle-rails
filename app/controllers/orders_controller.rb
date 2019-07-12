@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
  
     if order.valid?
       empty_cart!
-      ApplicationMailer.jungle_email(order).deliver
+      UserMailer.jungle_email(order, current_user).deliver
       redirect_to(order, notice: "order was successfully placed.")
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
