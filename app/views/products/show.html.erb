@@ -22,22 +22,24 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <hr>
-          <dt>Reviews</dt>
-          <% @product.reviews.order( 'created_at desc').each do |review| %>
-          <dd><strong> User: </strong> <i><%= review.user.first_name %></i> said "<%= review.description %>"
-          <dd> <strong> Rating:</strong> <%= review.rating %>
-          <% end %>
-          <dt>Price</dt>
-          <dd><%= @product.price %></dd>
-        </div>
-        <% if current_user %>
+          <div class="review col-lg-8">
+          <div class="add-review col-lg-8">
+            <% if current_user %>
+            <strong> Add a review! </strong>
         <%= form_for [@product, Review.new] do |f| %>
           <%= f.select(:rating, [1,2,3,4,5]) %>
           <%= f.text_field(:description) %>
           <%= submit_tag("Save") %>
         <% end %>
+        </div>
+        <dt>Reviews</dt>
+          <% @product.reviews.order( 'created_at desc').each do |review| %>
+          <dd><strong> User: </strong> <i><%= review.user.first_name %></i> said "<%= review.description %>"
+          <dd> <strong> Rating:</strong> <%= review.rating %>
+          <% end %>
+            </div>
+        </div>
         <% end %>
-        </dl>
       </div>
     </div>
   </article>
