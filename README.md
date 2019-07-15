@@ -5,6 +5,7 @@ A mini e-commerce project built with rails 4.2. Welcome to the jungle.
 ## Screenshots
 
 
+
 ## Setup
 
 - Fork & Clone
