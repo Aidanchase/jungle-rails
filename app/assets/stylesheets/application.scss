@@ -6,11 +6,21 @@
 // App
 @import "products";
 
+.user-links{
+  line-height: 50px;
+}
 // Global
 body {
   padding-top: 70px;
 }
 
+.add-a-review{
+  float: right;
+}
+article .review{
+  border: 1px solid #eee;
+  border-radius: 2px 2px 2px 2px;
+}
 // Bootstrap adjustments
 form.button_to {
   display: inline;
