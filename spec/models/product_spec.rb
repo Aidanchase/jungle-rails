@@ -13,7 +13,17 @@ end
 
 
 
-
+# describe '#name' do
+  #       it 'should have a name' do
+  #         @category = Category.find_or_create_by name: 'Testing'
+  #         @product = @category.products.create!({
+  #           name:  'Kitten Hands',
+  #           quantity: 69,
+  #           price: 4.20
+  #         })          
+  #         expect(@product.name).to be_present
+  #       end
+  #     end
 #     describe '#name' do
 #       it 'should have an assigned name' do
 #         @category = Category.new
