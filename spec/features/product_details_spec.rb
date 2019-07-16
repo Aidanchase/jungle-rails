@@ -34,6 +34,8 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     product_name = product_header.text
     product_header.click
 
+
+    # must use expect to have the browser wait until css loads
     expect(page).to have_css("section.products-show")
     save_screenshot "detail_page.png"
     
